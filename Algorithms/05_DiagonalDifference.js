@@ -45,15 +45,15 @@ function diagonalDifference(arr) {
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
-    const n = parseInt(readLine().trim(), 10);
+    const n = Number.parseInt(readLine().trim(), 10);
 
     let arr = Array(n);
 
     for (let i = 0; i < n; i++) {
         arr[i] = readLine().replace(/\s+$/g, '').split(' ').map(arrTemp => {
-            const num = parseInt(arrTemp, 10);
-            if(num < -100 && num > 100) {
-                throw new Error(`Elemento ${num} fora do intervalo (-100 a 100)`);
+            const num = Number.parseInt(arrTemp, 10);
+            if(num < -100 || num > 100) {
+                throw new Error(`Element ${num} out of the range (-100 to 100)`);
             }
             return num;
         });

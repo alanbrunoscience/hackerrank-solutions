@@ -56,8 +56,8 @@ function main() {
     a = readLine().replace(/\s+$/g, '').split(' ').map(aTemp => parseInt(aTemp, 10));
     b = readLine().replace(/\s+$/g, '').split(' ').map(bTemp => parseInt(bTemp, 10));
   } while (
-    !a || !b || // Verifica se os arrays existem
-    a.length !== b.length || // Verifica se têm o mesmo tamanho (opcional, se necessário)
+    !a || !b ||
+    a.length !== b.length ||
     !a.every(aTemp => aTemp >= 1 && aTemp <= 100) ||
     !b.every(bTemp => bTemp >= 1 && bTemp <= 100)
   );
