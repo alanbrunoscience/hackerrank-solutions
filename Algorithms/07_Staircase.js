@@ -43,7 +43,7 @@ function main() {
     do {
       n = parseInt(readLine().trim(), 10);
       if (isNaN(n) || n <= 0 || n > 100) {
-        console.log("Enter a number between 1 and 100.");
+        console.log("Enter a number between 1 and 100 (including).");
       }
     } while(isNaN(n) || n <= 0 || n > 100);
 
