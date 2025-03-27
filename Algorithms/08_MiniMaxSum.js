@@ -6,18 +6,18 @@ process.stdin.setEncoding('utf-8');
 let inputString = '';
 let currentLine = 0;
 
-process.stdin.on('data', function(inputStdin) {
-    inputString += inputStdin;
+process.stdin.on('data', function (inputStdin) {
+  inputString += inputStdin;
 });
 
-process.stdin.on('end', function() {
-    inputString = inputString.split('\n');
+process.stdin.on('end', function () {
+  inputString = inputString.split('\n');
 
-    main();
+  main();
 });
 
 function readLine() {
-    return inputString[currentLine++];
+  return inputString[currentLine++];
 }
 
 /*
@@ -35,7 +35,7 @@ function miniMaxSum(arr) {
   // for(let element of minElements) {
   //   minSum += Number.parseInt(element);
   // }
-  for(let i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) {
     minSum += Number.parseInt(arr[i]);
   }
 
@@ -43,7 +43,7 @@ function miniMaxSum(arr) {
   // for(let element of maxElements) {
   //   maxSum += Number.parseInt(element);
   // }
-  for(let i = 1; i <= 4; i++) {
+  for (let i = 1; i <= 4; i++) {
     maxSum += Number.parseInt(arr[i]);
   }
 
@@ -64,13 +64,13 @@ function miniMaxSum(arr) {
 
 function main() {
 
-    const arr = readLine().replace(/\s+$/g, '').split(' ').map(arrTemp => {
-      const num = Number.parseInt(arrTemp, 10);
-      if(num < 1 || num > Math.pow(10, 9)) {
-          throw new Error(`Element ${num} out of the range (1 to 10^9)`);
-      }
-      return num;
-    });
+  const arr = readLine().replace(/\s+$/g, '').split(' ').map(arrTemp => {
+    const num = Number.parseInt(arrTemp, 10);
+    if (num < 1 || num > Math.pow(10, 9)) {
+      throw new Error(`Element ${num} out of the range (1 to 10^9)`);
+    }
+    return num;
+  });
 
-    miniMaxSum(arr);
+  miniMaxSum(arr);
 }
