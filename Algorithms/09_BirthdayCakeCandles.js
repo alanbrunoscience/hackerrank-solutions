@@ -36,7 +36,7 @@ function readLine() {
 
 function birthdayCakeCandles(candles) {
 
-  candles.sort((a, b) => a - b);
+  candles.sort((a, b) => a - b); // This is not necessary
 
   const maxHeight = candles.reduce(function (accumulator, currentValue) {
     return Math.max(accumulator, currentValue);
