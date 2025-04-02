@@ -64,28 +64,23 @@ function getTotalX(a, b) {
 
   // Generate multiples of LCM up to currentGCD
   const arrNum = [];
-  for (let i = currentLCM; i <= currentGCD; i += currentLCM) {
-    arrNum.push(i);
+  if (currentLCM <= currentGCD) {
+    for (let i = currentLCM; i <= currentGCD; i += currentLCM) {
+      arrNum.push(i);
+    }
   }
 
   let countNum = 0;
 
   for (let num of arrNum) {
-    let countTemp = 0;
+    let isValid = true;
     for (let elem of b) {
-      if (elem <= num) {
-        if (num % elem === 0) {
-          countTemp++;
-        }
-      } else {
-        if (elem % num === 0) {
-          countTemp++; 
-        }
+      if (elem % num !== 0) {
+        isValid = false;
+        break;
       }
     }
-    if (countTemp === b.length) {
-      countNum++;
-    }
+    if (isValid) countNum++;
   }
 
   return countNum;
