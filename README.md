@@ -1,6 +1,6 @@
 # HackerRank Solutions Repository
 
-Welcome to my **HackerRank Solutions** repository! 🚀 This repository contains my solutions to various coding challenges on the **HackerRank** platform.
+Welcome to my **HackerRank Solutions** repository! 🚀 This repository contains my solutions to various coding challenges on the **[HackerRank](https://www.hackerrank.com/)** platform.
 
 ## 📂 Repository Structure
 The solutions are organized into different sections based on the problem category:
