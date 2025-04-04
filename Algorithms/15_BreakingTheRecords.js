@@ -35,20 +35,20 @@ function breakingRecords(scores) {
   }
 
   let highestScore = scores[0], lowestScore = scores[0];
-  let countHighest = 0, countLowest = 0;
+  let countMax = 0, countMin = 0;
 
   scores.forEach(score => {
     if (score > highestScore) {
       highestScore = score;
-      countHighest++;
+      countMax++;
     }
 
     if (score < lowestScore) {
       lowestScore = score;
-      countLowest++;
+      countMin++;
     }
   });
-  return [countHighest, countLowest];
+  return [countMax, countMin];
 }
 
 function main() {
