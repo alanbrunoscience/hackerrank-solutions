@@ -8,11 +8,11 @@ process.stdin.setEncoding('utf-8');
 let inputString = '';
 let currentLine = 0;
 
-process.stdin.on('data', function(inputStdin) {
+process.stdin.on('data', function (inputStdin) {
     inputString += inputStdin;
 });
 
-process.stdin.on('end', function() {
+process.stdin.on('end', function () {
     inputString = inputString.split('\n');
 
     main();
@@ -33,8 +33,17 @@ function readLine() {
  */
 
 function birthday(s, d, m) {
-    // Write your code here
-
+    let countWays = 0;
+    for (let i = 0; i < s.length - m; i++) {
+        let sum = 0;
+        for (let j = i; j < m + i; j++) {
+            sum += s[j];
+        }
+        if (sum === d) {
+            countWays++;
+        }
+    }
+    return countWays;
 }
 
 function main() {
