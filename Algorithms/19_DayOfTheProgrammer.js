@@ -56,7 +56,7 @@ const dayOfProgrammer = year => {
   const day = String(256 - sumDays).padStart(2, '0');
   const month = String(i + 1).padStart(2, '0');
 
-  return `${day}.${month}.${year}`
+  return `${day}.${month}.${year}`;
 
 }
 
