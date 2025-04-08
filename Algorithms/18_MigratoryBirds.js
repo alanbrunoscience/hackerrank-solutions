@@ -33,8 +33,6 @@ function migratoryBirds(arr) {
   // Write your code here
   const birdsTypes = [0, 0, 0, 0, 0];
 
-  arr.sort((a, b) => a - b);
-
   arr.forEach(type => {
     birdsTypes[type - 1]++;
   });
