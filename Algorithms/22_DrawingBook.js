@@ -37,7 +37,6 @@ function searchPageIndex(pages, targetPage) {
             right = mid - 1; // Search left half
         }
     }
-
     return -1; // Target not found
 }
 
