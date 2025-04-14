@@ -28,10 +28,12 @@ function searchPageIndex(pages, targetPage) {
 
     while (left <= right) {
         const mid = Math.floor((left + right) / 2);
+        const current = pages[mid];
 
-        if (pages[mid].includes(targetPage)) {
+        if (current.includes(targetPage)) {
             return mid; // Target found
-        } else if (pages[mid].every(page => page < targetPage)) {
+            // } else if (current.every(page => page < targetPage)) {
+        } else if (Math.max(...current) < targetPage) {
             left = mid + 1; // Search right half
         } else {
             right = mid - 1; // Search left half
@@ -43,16 +45,16 @@ function searchPageIndex(pages, targetPage) {
 function organizeBookPages(n) {
     const pages = [];
     pages.push([1]);
-  
+
     for (let i = 2; i <= n; i += 2) {
-      if (i + 1 <= n) {
-        pages.push([i, i + 1]);
-      } else {
-        pages.push([i]);
-      }
+        if (i + 1 <= n) {
+            pages.push([i, i + 1]);
+        } else {
+            pages.push([i]);
+        }
     }
     return pages;
-  }
+}
 
 /*
  * Complete the 'pageCount' function below.
@@ -69,9 +71,9 @@ function pageCount(n, p) {
 
     const indexPage = searchPageIndex(pages, p);
 
-    if (indexPage === 0 || indexPage === (pages.length - 1)) {
-        return 0;
-    }
+    if (indexPage === -1) return -1; // page not found
+    if (indexPage === 0 || indexPage === (pages.length - 1)) return 0;
+
     return Math.min(indexPage, (pages.length - 1) - indexPage);
     // return Math.min((indexPage - 0), (pages.length - 1) - indexPage);
 }
