@@ -71,7 +71,7 @@ function pageCount(n, p) {
 
     const indexPage = searchPageIndex(pages, p);
 
-    if (indexPage === -1) return -1; // page not found
+    if (indexPage === -1) return -1; // Page not found
     if (indexPage === 0 || indexPage === (pages.length - 1)) return 0;
 
     return Math.min(indexPage, (pages.length - 1) - indexPage);
