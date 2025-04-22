@@ -51,9 +51,9 @@ const formingMagicSquare = (s) => {
                 if (s[i][j] !== magicSquare[i][j]) {
                     currentCost += Math.abs(s[i][j] - magicSquare[i][j]);
                 }
-                // Early exit if currentCost already exceeds minimumCost
-                if (currentCost >= minimumCost) break;
             }
+            // Early exit if currentCost already exceeds minimumCost
+            if (currentCost >= minimumCost) break;
         }
         if (currentCost < minimumCost) {
             minimumCost = currentCost;
