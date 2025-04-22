@@ -22,7 +22,7 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-function insertElementsNeatly(uniqueRanked, score) {
+function searchElementPosition(uniqueRanked, score) {
   let left = 0;
   let right = uniqueRanked.length - 1;
 
