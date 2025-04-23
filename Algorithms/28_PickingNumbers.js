@@ -8,11 +8,11 @@ process.stdin.setEncoding('utf-8');
 let inputString = '';
 let currentLine = 0;
 
-process.stdin.on('data', function(inputStdin) {
+process.stdin.on('data', function (inputStdin) {
     inputString += inputStdin;
 });
 
-process.stdin.on('end', function() {
+process.stdin.on('end', function () {
     inputString = inputString.split('\n');
 
     main();
@@ -20,6 +20,44 @@ process.stdin.on('end', function() {
 
 function readLine() {
     return inputString[currentLine++];
+}
+
+function getSubArrays(a) {
+    a = a.sort((a, b) => a - b);
+
+    const subArrays = [];
+    const subArray = [];
+
+    for (let i = 1; i < a.length; i++) {
+        if (Math.abs(a[i] - a[i - 1]) <= 1) {
+            if (subArray.length === 0) {
+                subArray.push(a[i - 1]);
+                subArray.push(a[i]);
+            } else {
+                if (Math.abs(a[i] - subArray[0]) <= 1) {
+                    subArray.push(a[i]);
+                }
+                else {
+                    subArrays.push([...subArray]);
+                    subArray.length = 0;
+                }
+            }
+        } else {
+            if (subArray.length === 0) {
+                subArray.push(a[i - 1]);
+            }
+            
+            subArrays.push([...subArray]);
+            subArray.length = 0;
+
+            if (i === a.length - 1) {
+                subArray.push(a[i]);
+            }
+        }
+    }
+    if (subArray.length > 0) subArrays.push([...subArray]);
+
+    return subArrays;
 }
 
 /*
@@ -30,8 +68,19 @@ function readLine() {
  */
 
 function pickingNumbers(a) {
-    // Write your code here
 
+    if (a.length === 0) {
+        return 0;
+    } else if (a.length < 2) {
+        return 1;
+    } else {
+
+        const subArrays = getSubArrays(a);
+
+        const maxLength = Math.max(...subArrays.map(sub => sub.length));
+
+        return maxLength;
+    }
 }
 
 function main() {
