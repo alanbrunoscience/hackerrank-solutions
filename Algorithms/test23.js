@@ -2,39 +2,33 @@
 
 function getSubArrays(a) {
   a = a.sort((a, b) => a - b);
-
-  const subArrays = [];
+  console.log(a);
+ 
+  let i = 0, j = 0;
   const subArray = [];
+  const subArrays = [];
 
-  for (let i = 1; i < a.length; i++) {
-    if (Math.abs(a[i] - a[i - 1]) <= 1) {
-      if (subArray.length === 0) {
-        subArray.push(a[i - 1]);
-        subArray.push(a[i]);
+  while (i < a.length && j < a.length) {
+    subArray.push(a[i]);
+    for (j = i + 1; j < a.length; j++) {
+      if (Math.abs(a[j] - a[i]) <= 1) {
+        subArray.push(a[j]);
       } else {
-        if (Math.abs(a[i] - subArray[0]) <= 1) {
-          subArray.push(a[i]);
-        }
-        else {
-          subArrays.push([...subArray]);
-          subArray.length = 0;
-        }
-      }
-    } else {
-      if (subArray.length === 0) {
-        subArray.push(a[i - 1]);
-      }
+        subArrays.push([...subArray]);
+        subArray.length = 0;
 
-      subArrays.push([...subArray]);
-      subArray.length = 0;
-
-      if (i === a.length - 1) {
-        subArray.push(a[i]);
+        i = j;
+        break;
       }
     }
-  }
-  if (subArray.length > 0) subArrays.push([...subArray]);
 
+    if (subArray.length !== 0) {
+      subArrays.push([...subArray]);
+      subArray.length = 0;
+    }
+
+    if (i !== j) i++;
+  }
   return subArrays;
 }
 
@@ -76,7 +70,7 @@ function main() {
   //   console.log(`Array: [${test}] -> Result: ${pickingNumbers(test)}`);
   // });
 
-  const a = [1, 2, 3, 4, 5];
+  const a = [1, 1, 1, 3, 3, 5];
 
   console.log(getSubArrays(a));
 }
