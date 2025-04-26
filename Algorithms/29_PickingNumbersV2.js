@@ -30,9 +30,7 @@ function readLine() {
  */
 
 function pickingNumbers(a) {
-
-    a = a.sort((a, b) => a - b);
-    console.log(a);
+    a.sort((a, b) => a - b);
 
     if (a.length === 0) {
         return 0;
@@ -40,9 +38,7 @@ function pickingNumbers(a) {
         return 1;
     } else {
 
-        let countMaxLength = -Infinity;
-
-        let i = 0, j = 0;
+        let i = 0, j = 0, countMaxLength = 0;
 
         while (i < a.length) {
             let count = 1;
@@ -50,19 +46,17 @@ function pickingNumbers(a) {
                 if (Math.abs(a[j] - a[i]) <= 1) {
                     count++;
                 } else {
-                    i = j;
                     break;
                 }
             }
 
-            if (count > countMaxLength) countMaxLength = count;
+            if (count > countMaxLength) {
+                countMaxLength = count;
+            }
 
-            if (i !== j) i++;
-
+            i = j;
         }
-
         return countMaxLength;
-
     }
 }
 

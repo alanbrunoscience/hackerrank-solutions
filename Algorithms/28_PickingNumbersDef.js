@@ -23,7 +23,7 @@ function readLine() {
 }
 
 function getSubArrays(a) {
-    a = a.sort((a, b) => a - b);
+    a.sort((a, b) => a - b);
     console.log(a);
 
     let i = 0, j = 0;
@@ -36,30 +36,15 @@ function getSubArrays(a) {
             if (Math.abs(a[j] - a[i]) <= 1) {
                 subArray.push(a[j]);
             } else {
-                subArrays.push([...subArray]);
-                subArray.length = 0;
-
-                i = j;
                 break;
             }
         }
-
-        if (subArray.length !== 0) {
-            subArrays.push([...subArray]);
-            subArray.length = 0;
-            i = j;
-        }
-
+        subArrays.push([...subArray]);
+        subArray.length = 0;
+        i = j;
     }
     return subArrays;
 }
-
-/*
- * Complete the 'pickingNumbers' function below.
- *
- * The function is expected to return an INTEGER.
- * The function accepts INTEGER_ARRAY a as parameter.
- */
 
 function pickingNumbers(a) {
 
