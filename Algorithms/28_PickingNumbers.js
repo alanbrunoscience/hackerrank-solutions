@@ -30,7 +30,7 @@ function getSubArrays(a) {
     const subArray = [];
     const subArrays = [];
 
-    while (i < a.length && j < a.length) {
+    while (i < a.length) {
         subArray.push(a[i]);
         for (j = i + 1; j < a.length; j++) {
             if (Math.abs(a[j] - a[i]) <= 1) {
@@ -47,9 +47,9 @@ function getSubArrays(a) {
         if (subArray.length !== 0) {
             subArrays.push([...subArray]);
             subArray.length = 0;
+            i = j;
         }
 
-        if (i !== j) i++;
     }
     return subArrays;
 }
